@@ -26,6 +26,7 @@
     "cssify": "^0.5.1",
     "famous": "^0.2.2",
     "famous-polyfills": "^0.2.2",
-    "superagent": "^0.18.2"
+    "superagent": "^0.18.2",
+    "bluebird": "^2.2.2"
   }
 }

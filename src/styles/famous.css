@@ -16,6 +16,7 @@ html {
     overflow: hidden;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    background: #fff;
 }
 
 body {
@@ -74,4 +75,9 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
+}
+
+.backfaceVisibility {
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
 }

@@ -13,7 +13,7 @@ class EBInstagramList extends EBView
     console.log 'creating new instagram view'
     @scrollView = new ScrollView @options.scroll
     scrollViewPositioningModifier = new Modifier
-      transform: Transform.translate 0, 7.5, 1
+      transform: Transform.translate 0, 10, 1
     @images = []
     @scrollView.sequenceFrom @images
     @add scrollViewPositioningModifier

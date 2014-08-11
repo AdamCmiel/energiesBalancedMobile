@@ -2,6 +2,7 @@ Surface = require 'famous/core/Surface'
 EBView = require '../EBView'
 HeaderFooterLayout = require 'famous/views/HeaderFooterLayout'
 EBHeaderLogo = require './EBHeaderLogo'
+EBHeaderLabel = require '../../templates/EBHeaderLabel.jade'
 
 class EBHeader extends EBView
   constructor: ->
@@ -28,12 +29,9 @@ class EBHeader extends EBView
 
 EBHeader.DEFAULT_OPTIONS =
   background:
-    properties:
-      backgroundColor: 'black'
+    classes: ["header-background"]
   label:
-    content: 'Energies Balanced'
-    properties:
-      color: 'white'
+    content: EBHeaderLabel()
   layout:
     direction: HeaderFooterLayout.DIRECTION_X
     headerSize: 60,

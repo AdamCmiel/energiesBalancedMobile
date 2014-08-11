@@ -29,7 +29,7 @@ class EBInstagramListItem extends EBView
 
 EBInstagramListItem::getSize = ->
     imageSize = @contentModifier.getSize()
-    [imageSize[0] + 10, imageSize[1] + 10]
+    [imageSize[0] + 10, imageSize[1] + 12.5]
     # imageSize
 
 module.exports = EBInstagramListItem

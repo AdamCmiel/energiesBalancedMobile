@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "npm run lint -s",
-    "build": "cp -R static/ Build/www/ && browserify -t coffeeify --extension='.coffee' src/index.coffee -t cssify -t brfs | closure > Build/www/bundle.js",
-    "watch": "watchify -t coffeeify --extension='.coffee' src/index.coffee -t cssify -t brfs -o Build/www/bundle.js --debug --verbose",
+    "build": "cp -R static/ Build/www/ && browserify -t coffeeify --extension='.coffee' src/index.coffee -t jadeify -t stylify -t cssify -t brfs | closure > Build/www/bundle.js",
+    "watch": "watchify -t coffeeify --extension='.coffee' src/index.coffee -t jadeify -t stylify -t cssify -t brfs -o Build/www/bundle.js --debug --verbose",
     "serve": "serve --compress Build/www",
     "lint-eslint": "eslint src/",
     "lint-jscs": "jscs src/",
@@ -17,15 +17,21 @@
     "jscs": "^1.5.7",
     "watchify": "^0.10.2"
   },
-  "author": "TheAlphaNerd",
-  "license": "ISC",
+  "author": "Adam Cmiel adamcmiel@gmail.com",
+  "license": "MIT",
   "dependencies": {
     "brfs": "^1.1.1",
+    "browserify": "^5.9.1",
     "coffee-script": "^1.7.1",
     "coffeeify": "^0.7.0",
     "cssify": "^0.5.1",
     "famous": "^0.2.2",
     "famous-polyfills": "^0.2.2",
+    "insert-css": "^0.2.0",
+    "jade": "^1.5.0",
+    "jadeify": "^2.5.0",
+    "stylify": "^0.1.5",
+    "stylus": "^0.47.3",
     "superagent": "^0.18.2"
   }
 }

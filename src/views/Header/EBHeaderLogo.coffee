@@ -13,9 +13,7 @@ class EBHeaderLogo extends EBButton
     @pipeThroughTouchEvents()
 
     initialTime = Date.now()
-    spinningWhiteThing = new Surface
-      properties:
-        backgroundColor: 'white'
+    spinningWhiteThing = new Surface @options.background
     spinner = new Modifier
       size: [40, 40]
       origin: [0.5, 0.5]
@@ -27,9 +25,9 @@ class EBHeaderLogo extends EBButton
 
 EBHeaderLogo.DEFAULT_OPTIONS =
   ImageSurface: yes
-  classes: ['eb-header-logo']
+  classes: ['header-logo']
   eventName: 'toggleMenu'
-  properties:
-    padding: '10px'
+  background:
+    classes: ['header-logo-background']
 
 module.exports = EBHeaderLogo

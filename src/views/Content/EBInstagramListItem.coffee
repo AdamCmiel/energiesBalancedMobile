@@ -8,7 +8,7 @@ class EBInstagramListItem extends EBView
   constructor: (imageURL) ->
     super
     content = new ImageSurface content: imageURL
-    cardBackground = new Surface properties: backgroundColor: 'white'
+    cardBackground = new Surface @options.background
     cardBackgroundModifier = new Modifier
       origin: [0.5, 0]
       transform: Transform.translate 0, -2.5, 1
@@ -27,9 +27,12 @@ class EBInstagramListItem extends EBView
     @add cardBackgroundModifier
     .add cardBackground
 
+EBInstagramListItem.DEFAULT_OPTIONS =
+  background:
+    classes: ["instagram-list-item-card-background"]
+
 EBInstagramListItem::getSize = ->
     imageSize = @contentModifier.getSize()
     [imageSize[0] + 10, imageSize[1] + 12.5]
-    # imageSize
 
 module.exports = EBInstagramListItem

@@ -1,10 +1,14 @@
-View = require 'famous/core/View'
+EBView = require '../EBView'
 Modifier = require 'famous/core/Modifier'
 EBMenuBackground = require './EBMenuBackground'
+EBMenuList = require './EBMenuList'
 
-class EBMenu extends View
+class EBMenu extends EBView
   constructor: ->
     super
+
+    menu = new EBMenuList
+    @add menu
 
     # Add Background
     background = new EBMenuBackground

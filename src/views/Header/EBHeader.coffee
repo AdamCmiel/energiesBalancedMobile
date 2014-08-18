@@ -1,21 +1,25 @@
 Surface = require 'famous/core/Surface'
+Modifier = require 'famous/core/Modifier'
 EBView = require '../EBView'
 HeaderFooterLayout = require 'famous/views/HeaderFooterLayout'
 EBHeaderLogo = require './EBHeaderLogo'
 EBHeaderLabel = require '../../templates/EBHeaderLabel.jade'
+Transform = require 'famous/core/Transform'
 
 class EBHeader extends EBView
   constructor: ->
     super
 
+    addNode = @add new Modifier transform: Transform.translate 0, 0, 10
+
     #Add background surface
     background = new Surface @options.background
     @subscribe background
-    @add background
+    addNode.add background
 
     #Add header footer layout for header icon nav
     layout = new HeaderFooterLayout @options.layout
-    @add layout
+    addNode.add layout
 
     #Add logo button to reveal drawer
     layout.header = logo = new EBHeaderLogo

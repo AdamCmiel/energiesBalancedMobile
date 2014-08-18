@@ -7,7 +7,7 @@
     "test": "npm run lint -s",
     "build": "cp -R static/ Build/www/ && browserify -t coffeeify --extension='.coffee' src/index.coffee -t jadeify -t stylify -t cssify -t brfs | closure > Build/www/bundle.js",
     "watch": "watchify -t coffeeify --extension='.coffee' src/index.coffee -t jadeify -t stylify -t cssify -t brfs -o Build/www/bundle.js --debug --verbose",
-    "serve": "serve --compress Build/www",
+    "serve": "serve --compress -p 3333 Build/www",
     "lint-eslint": "eslint src/",
     "lint-jscs": "jscs src/",
     "lint": "npm run lint-eslint; npm run lint-jscs"
@@ -20,6 +20,7 @@
   "author": "Adam Cmiel adamcmiel@gmail.com",
   "license": "MIT",
   "dependencies": {
+    "backbone": "^1.1.2",
     "brfs": "^1.1.1",
     "browserify": "^5.9.1",
     "coffee-script": "^1.7.1",
@@ -30,6 +31,7 @@
     "insert-css": "^0.2.0",
     "jade": "^1.5.0",
     "jadeify": "^2.5.0",
+    "jquery": "^2.1.1",
     "stylify": "^0.1.5",
     "stylus": "^0.47.3",
     "superagent": "^0.18.2"

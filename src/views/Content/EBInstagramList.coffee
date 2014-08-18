@@ -10,7 +10,7 @@ EBInstagramListItem = require './EBInstagramListItem'
 class EBInstagramList extends EBView
   constructor: ->
     super
-    console.log 'creating new instagram view'
+    log 'creating new instagram view'
     @scrollView = new ScrollView @options.scroll
     scrollViewPositioningModifier = new Modifier
       transform: Transform.translate 0, 10, 1
@@ -32,7 +32,7 @@ EBInstagramList::getImages = ->
      @addImages imageData
 
 EBInstagramList::addImages = (data) ->
-  console.log "Adding Images, API Version: #{data.api_version}"
+  log "Adding Images, API Version: #{data.api_version}"
   (@addImage imageURL for imageURL in data.images)
 
 EBInstagramList::addImage = (url) ->

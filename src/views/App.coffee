@@ -4,6 +4,8 @@ DrawerLayout = require '../famousInternal/DrawerLayout'
 TouchSync = require 'famous/inputs/TouchSync'
 EBMenu = require './MenuDrawer/EBMenu'
 EBContentView = require './EBContentView'
+router = require '../EBRouter'
+pages = require '../pages'
 
 ###*
  * Top Level App Controller
@@ -15,7 +17,7 @@ class App extends EBView
     super
     layout = @layout = new DrawerLayout @options.layout
     layout.drawer = drawer = new EBMenu
-    layout.content = content = new EBContentView
+    layout.content = content = @content = new EBContentView
 
     sync = new TouchSync @options.sync
 
@@ -28,6 +30,16 @@ class App extends EBView
     @subscribe drawer
     @_eventInput.on 'toggleMenu', =>
       layout.toggle @options.layout.transition
+
+    for page of pages
+      log "Attaching route listener at route:#{page}"
+      router.on "route:#{page}", =>
+        @showPage page
+        log "Route:#{page}"
+
+  showPage: (page) ->
+    log "Showing page #{page}"
+    @content.showPage page
 
 App.DEFAULT_OPTIONS =
   layout:

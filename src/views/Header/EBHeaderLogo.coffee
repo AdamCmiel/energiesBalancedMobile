@@ -7,7 +7,7 @@ class EBHeaderLogo extends EBButton
   constructor: ->
     super
 
-    @content.setContent 'images/eb_logo.png'
+    @content.setContent 'images/eb_logo_transparent.svg'
     @contentModifier.setTransform Transform.translate(0, 0, 2)
     @subscribe @content
     @pipeThroughTouchEvents()
@@ -15,10 +15,11 @@ class EBHeaderLogo extends EBButton
     initialTime = Date.now()
     spinningWhiteThing = new Surface @options.background
     spinner = new Modifier
-      size: [40, 40]
+      opacity: 0.8
+      size: [60, 60]
       origin: [0.5, 0.5]
-      transform: ->
-        Transform.rotateZ 0.0005 * (Date.now() - initialTime)
+      # transform: ->
+      #   Transform.rotateZ 0.0005 * (Date.now() - initialTime)
 
     @add spinner
     .add spinningWhiteThing

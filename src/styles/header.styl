@@ -1,11 +1,18 @@
+@require "colors"
+
 .header-label
   color white
 
 .header-background
-  background blue
+  background EBPurple['dark']
 
 .header-logo
   padding 10px
 
 .header-logo-background
   background white
+  background -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,1)), color-stop(80%,rgba(255,255,255,0))) /* Chrome,Safari4+ */
+  background -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 80%)  /*Chrome10+,Safari5.1+ */
+  background -o-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 80%) /* Opera 12+ */
+  background -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 80%) /* IE10+ */
+  background radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 80%) /* W3C */

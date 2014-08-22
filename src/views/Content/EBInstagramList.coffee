@@ -28,8 +28,7 @@ EBInstagramList.DEFAULT_OPTIONS =
   scroll:
     clipSize: 600
     margin: 600
-  background:
-    classes: ["instagram-feed-background"]
+  background: classes: ["instagram-feed-background"]
 
 EBInstagramList::getImages = ->
   $.get "https://s3-us-west-2.amazonaws.com/com.adamcmiel.energiesbalanced/eb_instagram_feed.json"

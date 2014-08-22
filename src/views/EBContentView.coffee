@@ -10,6 +10,7 @@ EBClassList        = require './content/EBClassList'
 EBTeachersList     = require './content/EBTeachersList'
 EBPodcastFeed      = require './content/EBPodcastFeed'
 EBMassagePage      = require './content/EBMassagePage'
+router             = require '../EBRouter'
 
 class EBContentView extends EBView
   constructor: ->
@@ -76,12 +77,22 @@ class EBContentView extends EBView
 
     @_eventInput.on "splashPageComplete", =>
       @layoutRenderController.show @layout
+      router.navigate "ig-feed", duration: 0
 
 EBContentView.DEFAULT_OPTIONS =
   layout:
     headerSize: 60
     footerSize: 0
-  renderController: {}
-  layoutRenderController: {}
+  renderController:
+    inTransition:
+      duration: 0
+    outTransition:
+      duration: 0
+  layoutRenderController:
+    inTransition:
+      duration: 0
+    outTransition:
+      duration: 500
+
 
 module.exports = EBContentView

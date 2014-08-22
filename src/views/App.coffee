@@ -40,6 +40,7 @@ class App extends EBView
     router.on "route:massage", => @showPage "massage"
 
     router.navigate "ig-feed"
+    router.navigate "splash"
 
     # for page of pages
     #   log "Attaching route listener at route:#{page}"

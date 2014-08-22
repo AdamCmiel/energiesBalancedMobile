@@ -15,11 +15,13 @@ class EBMenuListItem extends EBView
 
     button = new EBButton
       content: EBButtonLabel title: title, position: position
-      classes: ['eb-button', 'menu-list-item']
-      eventName: 'menu-list-item-clicked'
+      classes: ["eb-button", "menu-list-item"]
+      eventName: "menu-list-item-clicked"
 
     @subscribe button
-    button.on 'menu-list-item-clicked', -> router.navigate title
+    button.on "menu-list-item-clicked", ->
+      router.navigate title
+      @_eventOutput.emit "closeMenu"
 
     buttonModifier = new Modifier
       size: [undefined, 80]

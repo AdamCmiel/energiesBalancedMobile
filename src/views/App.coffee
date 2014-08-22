@@ -1,11 +1,11 @@
-EBView = require './EBView'
-Surface = require 'famous/core/Surface'
-DrawerLayout = require '../famousInternal/DrawerLayout'
-TouchSync = require 'famous/inputs/TouchSync'
-EBMenu = require './MenuDrawer/EBMenu'
-EBContentView = require './EBContentView'
-router = require '../EBRouter'
-pages = require '../pages'
+EBView = require "./EBView"
+Surface = require "famous/core/Surface"
+DrawerLayout = require "../famousInternal/DrawerLayout"
+TouchSync = require "famous/inputs/TouchSync"
+EBMenu = require "./MenuDrawer/EBMenu"
+EBContentView = require "./EBContentView"
+router = require "../EBRouter"
+pages = require "../pages"
 
 ###*
  * Top Level App Controller
@@ -28,8 +28,12 @@ class App extends EBView
 
     @subscribe content
     @subscribe drawer
-    @_eventInput.on 'toggleMenu', =>
+    @_eventInput.on "toggleMenu", =>
       layout.toggle @options.layout.transition
+
+    @_eventInput.on "closeMenu", ->
+      debugger
+      layout.close()
 
     # Make this more elegant
     router.on "route:splash", => @showPage "splash"

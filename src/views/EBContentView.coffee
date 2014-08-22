@@ -1,16 +1,16 @@
-Surface            = require 'famous/core/Surface'
-HeaderFooterLayout = require 'famous/views/HeaderFooterLayout'
-RenderController   = require 'famous/views/RenderController'
+Surface            = require "famous/core/Surface"
+HeaderFooterLayout = require "famous/views/HeaderFooterLayout"
+RenderController   = require "famous/views/RenderController"
 
-EBView             = require './EBView'
-EBHeader           = require './Header/EBHeader'
-EBSplash           = require './content/EBSplash'
-EBInstagramList    = require './content/EBInstagramList'
-EBClassList        = require './content/EBClassList'
-EBTeachersList     = require './content/EBTeachersList'
-EBPodcastFeed      = require './content/EBPodcastFeed'
-EBMassagePage      = require './content/EBMassagePage'
-router             = require '../EBRouter'
+EBView             = require "./EBView"
+EBHeader           = require "./Header/EBHeader"
+EBSplash           = require "./content/EBSplash"
+EBInstagramList    = require "./content/EBInstagramList"
+EBClassList        = require "./content/EBClassList"
+EBTeachersList     = require "./content/EBTeachersList"
+EBPodcastFeed      = require "./content/EBPodcastFeed"
+EBMassagePage      = require "./content/EBMassagePage"
+router             = require "../EBRouter"
 
 class EBContentView extends EBView
   constructor: ->

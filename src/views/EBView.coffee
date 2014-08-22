@@ -1,4 +1,4 @@
-View = require 'famous/core/view'
+View = require "famous/core/view"
 
 class EBView extends View
   constructor: (options) ->

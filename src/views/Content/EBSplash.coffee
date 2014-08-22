@@ -66,7 +66,7 @@ class EBSplash extends EBView
   move: ->
     @progress.set 1,
       duration: 3000
-      method: 'spring'
+      method: "spring"
       period: 800
       dampingRatio: 0.7
     , => @end()

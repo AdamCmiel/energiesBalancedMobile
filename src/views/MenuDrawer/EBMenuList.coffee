@@ -9,7 +9,12 @@ class EBMenuList extends EBView
     position = 0
 
     for title, page of pages
-      @add new EBMenuListItem page: page, title: title, position: position
+      if page == "splash" then continue
+      item = new EBMenuListItem page: page, title: title, position: position
+      @add item
+      @subscribe item
       position++
+
+    @pipeThrough "closeMenu"
 
 module.exports = EBMenuList

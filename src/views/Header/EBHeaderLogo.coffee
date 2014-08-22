@@ -1,13 +1,13 @@
-EBButton = require '../EBButton'
-Transform = require 'famous/core/Transform'
-Surface = require 'famous/core/Surface'
-Modifier = require 'famous/core/Modifier'
+EBButton = require "../EBButton"
+Transform = require "famous/core/Transform"
+Surface = require "famous/core/Surface"
+Modifier = require "famous/core/Modifier"
 
 class EBHeaderLogo extends EBButton
   constructor: ->
     super
 
-    @content.setContent 'images/eb_logo_transparent.svg'
+    @content.setContent "images/eb_logo_transparent.svg"
     @contentModifier.setTransform Transform.translate(0, 0, 2)
     @subscribe @content
     @pipeThroughTouchEvents()
@@ -26,9 +26,9 @@ class EBHeaderLogo extends EBButton
 
 EBHeaderLogo.DEFAULT_OPTIONS =
   ImageSurface: yes
-  classes: ['header-logo']
-  eventName: 'toggleMenu'
+  classes: ["header-logo"]
+  eventName: "toggleMenu"
   background:
-    classes: ['header-logo-background']
+    classes: ["header-logo-background"]
 
 module.exports = EBHeaderLogo

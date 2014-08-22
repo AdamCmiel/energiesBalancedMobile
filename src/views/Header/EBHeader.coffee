@@ -1,10 +1,10 @@
-Surface = require 'famous/core/Surface'
-Modifier = require 'famous/core/Modifier'
-EBView = require '../EBView'
-HeaderFooterLayout = require 'famous/views/HeaderFooterLayout'
-EBHeaderLogo = require './EBHeaderLogo'
-EBHeaderLabel = require '../../templates/EBHeaderLabel.jade'
-Transform = require 'famous/core/Transform'
+Surface = require "famous/core/Surface"
+Modifier = require "famous/core/Modifier"
+EBView = require "../EBView"
+HeaderFooterLayout = require "famous/views/HeaderFooterLayout"
+EBHeaderLogo = require "./EBHeaderLogo"
+EBHeaderLabel = require "../../templates/EBHeaderLabel.jade"
+Transform = require "famous/core/Transform"
 
 class EBHeader extends EBView
   constructor: ->

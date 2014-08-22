@@ -1,8 +1,8 @@
-EBView = require '../EBView'
-Modifier = require 'famous/core/Modifier'
-ImageSurface = require 'famous/surfaces/ImageSurface'
-Surface = require 'famous/core/Surface'
-Transform = require 'famous/core/Transform'
+EBView = require "../EBView"
+Modifier = require "famous/core/Modifier"
+ImageSurface = require "famous/surfaces/ImageSurface"
+Surface = require "famous/core/Surface"
+Transform = require "famous/core/Transform"
 
 class EBInstagramListItem extends EBView
   constructor: (imageURL) ->

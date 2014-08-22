@@ -1,4 +1,4 @@
-EBView = require '../EBView'
+EBView = require "../EBView"
 
 class EBTeachersList extends EBView
   constructor: ->

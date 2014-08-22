@@ -31,15 +31,26 @@ class App extends EBView
     @_eventInput.on 'toggleMenu', =>
       layout.toggle @options.layout.transition
 
-    for page of pages
-      log "Attaching route listener at route:#{page}"
-      router.on "route:#{page}", =>
-        @showPage page
-        log "Route:#{page}"
+    # Make this more elegant
+    router.on "route:splash", => @showPage "splash"
+    router.on "route:ig-feed", => @showPage "ig-feed"
+    router.on "route:classes", => @showPage "classes"
+    router.on "route:teachers", => @showPage "teachers"
+    router.on "route:podcast-feed", => @showPage "podcast-feed"
+    router.on "route:massage", => @showPage "massage"
+
+    router.navigate "ig-feed"
+
+    # for page of pages
+    #   log "Attaching route listener at route:#{page}"
+    #   router.on "route:#{page}", =>
+    #     @showPage page
+    #     log "Route:#{page}"
 
   showPage: (page) ->
     log "Showing page #{page}"
     @content.showPage page
+    @layout.close()
 
 App.DEFAULT_OPTIONS =
   layout:

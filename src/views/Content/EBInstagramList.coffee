@@ -1,16 +1,20 @@
-EBView = require '../EBView'
-ScrollView = require 'famous/views/ScrollView'
-ImageSurface = require 'famous/surfaces/ImageSurface'
-Modifier = require 'famous/core/Modifier'
-Transform = require 'famous/core/Transform'
-$ = require '../../EBHttp'
+EBView = require "../EBView"
+Surface = require "famous/core/Surface"
+ScrollView = require "famous/views/ScrollView"
+ImageSurface = require "famous/surfaces/ImageSurface"
+Modifier = require "famous/core/Modifier"
+Transform = require "famous/core/Transform"
+$ = require "../../EBHttp"
 
-EBInstagramListItem = require './EBInstagramListItem'
+EBInstagramListItem = require "./EBInstagramListItem"
 
 class EBInstagramList extends EBView
   constructor: ->
     super
-    log 'creating new instagram view'
+    @background = new Surface @options.background
+    @add @background
+
+    log "creating new instagram view"
     @scrollView = new ScrollView @options.scroll
     scrollViewPositioningModifier = new Modifier
       transform: Transform.translate 0, 10, 1
@@ -24,9 +28,11 @@ EBInstagramList.DEFAULT_OPTIONS =
   scroll:
     clipSize: 600
     margin: 600
+  background:
+    classes: ["instagram-feed-background"]
 
 EBInstagramList::getImages = ->
-  $.get 'https://s3-us-west-2.amazonaws.com/com.adamcmiel.energiesbalanced/eb_instagram_feed.json'
+  $.get "https://s3-us-west-2.amazonaws.com/com.adamcmiel.energiesbalanced/eb_instagram_feed.json"
    .endAsync (data) =>
      imageData = JSON.parse data.text
      @addImages imageData

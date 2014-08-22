@@ -15,34 +15,73 @@ class EBContentView extends EBView
   constructor: ->
     super
 
-    @pages =
-      "splash":       new EBSplash
-      "ig-feed":      new EBInstagramList
-      "classes":      new EBClassList
-      "teachers":     new EBTeachersList
-      "podcast-feed": new EBPodcastFeed
-      "massage":      new EBMassagePage
+    @pages = {}
 
-    layout         = new HeaderFooterLayout @options.layout
-    layout.header  = header = new EBHeader
-    layout.content = content = @content = new RenderController @options.renderController
+    # change this to consume pages.json, how to use constructors?
+    @addPage
+      page: "splash"
+      renderable: new EBSplash
+      title: "Energies Balanced"
 
-    instagramList = new EBInstagramList
-    content.show instagramList
-    @add layout
+    @addPage
+      page: "ig-feed"
+      renderable: new EBInstagramList
+      title: "Energies Balanced"
+
+    @addPage
+      page: "classes"
+      renderable: new EBClassList
+      title: "Yoga Classes"
+
+    @addPage
+      page: "teachers"
+      renderable: new EBTeachersList
+      title: "Instructors"
+
+    @addPage
+      page: "massage"
+      renderable: new EBMassagePage
+      title: "Massage"
+
+    layoutRenderController = @layoutRenderController = new RenderController @options.layoutRenderController
+
+    layout = @layout = new HeaderFooterLayout @options.layout
+    layout.header    = header = @header = new EBHeader
+    layout.content   = content = @content = new RenderController @options.renderController
+
+    @add layoutRenderController
+    layoutRenderController.show layout
 
     # Rebroadcast touch events to DrawerLayout
     @subscribe header
     @pipeThroughTouchEvents()
     @pipeThrough "toggleMenu"
 
+  addPage: (pageObj) ->
+    @pages[pageObj.page] = pageObj
+    @subscribe pageObj.renderable
+
+  showPage: (page) ->
+    if page == "splash"
+      @showSplashPage()
+      return
+
+    log "Showing page: #{page}"
+    @header.setHeader @pages[page].title
+    @content.show @pages[page].renderable
+
+  showSplashPage: ->
+    @layoutRenderController.show @pages["splash"].renderable
+    @pages["splash"].renderable.start()
+
+    @_eventInput.on "splashPageComplete", =>
+      @layoutRenderController.show @layout
+
 EBContentView.DEFAULT_OPTIONS =
   layout:
     headerSize: 60
     footerSize: 0
   renderController: {}
-
-EBContentView::showPage = (page) ->
-    @content.show @pages[page].renderable
+  layoutRenderController: {}
 
 module.exports = EBContentView

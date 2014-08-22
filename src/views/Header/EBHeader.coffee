@@ -19,7 +19,9 @@ class EBHeader extends EBView
 
     #Add header footer layout for header icon nav
     layout = new HeaderFooterLayout @options.layout
-    addNode.add layout
+    layoutZModifier = new Modifier transform: Transform.inFront
+    addNode.add layoutZModifier
+           .add layout
 
     #Add logo button to reveal drawer
     layout.header = logo = new EBHeaderLogo
@@ -31,11 +33,14 @@ class EBHeader extends EBView
     @pipeThroughTouchEvents()
     @pipeThrough "toggleMenu"
 
+  setHeader: (content) ->
+    @headerLabel.setContent EBHeaderLabel content: content
+
 EBHeader.DEFAULT_OPTIONS =
   background:
     classes: ["header-background"]
   label:
-    content: EBHeaderLabel()
+    content: EBHeaderLabel content: "Energies Balanced"
   layout:
     direction: HeaderFooterLayout.DIRECTION_X
     headerSize: 60,

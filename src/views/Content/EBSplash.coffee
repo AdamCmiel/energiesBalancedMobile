@@ -6,6 +6,7 @@ Transform = require "famous/core/Transform"
 Transitionable = require "famous/transitions/Transitionable"
 Modifier = require "famous/core/Modifier"
 Timer = require "famous/utilities/Timer"
+Easing = require "famous/transitions/Easing"
 pi = Math.PI
 
 class EBSplash extends EBView
@@ -61,15 +62,10 @@ class EBSplash extends EBView
   start: ->
     @content.show @logo
     @labelContent.show @label
-    Timer.after (=> @move()), 60
+    Timer.after (=> @move()), 5
 
   move: ->
-    @progress.set 1,
-      duration: 3000
-      method: "spring"
-      period: 800
-      dampingRatio: 0.7
-    , => @end()
+    @progress.set 1, @options.inBackMoveTransition, => @end()
 
   end: ->
     @_eventOutput.emit "splashPageComplete"
@@ -83,5 +79,13 @@ EBSplash.DEFAULT_OPTIONS =
       duration: 0
     outTransition:
       duration: 0
+  springMoveTransition:
+    duration: 4000
+    method: "spring"
+    period: 800
+    dampingRatio: 0.7
+  inBackMoveTransition:
+    curve: (t) -> Easing.inOutBack t, 0.7
+    duration: 2000
 
 module.exports = EBSplash

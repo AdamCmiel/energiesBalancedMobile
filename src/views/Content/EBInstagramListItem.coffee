@@ -8,6 +8,9 @@ class EBInstagramListItem extends EBView
   constructor: (imageURL) ->
     super
     content = new ImageSurface content: imageURL
+
+    content.on "load", (e) -> log "image loaded", e
+
     cardBackground = new Surface @options.background
     cardBackgroundModifier = new Modifier
       origin: [0.5, 0]
